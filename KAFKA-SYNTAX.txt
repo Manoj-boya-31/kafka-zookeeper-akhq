@@ -1,5 +1,4 @@
 								TOPICS:
-
 CREATE A TOPIC:
 C:\kafka_2.13-3.9.1\bin\windows\kafka-topics.bat --create --topic zing-zing --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 
@@ -8,14 +7,22 @@ C:\kafka_2.13-3.9.1\bin\windows\kafka-topics.bat --list --bootstrap-server local
 
 TO WRITE DATA INTO TOPICS:
 C:\kafka_2.13-3.9.1\bin\windows\kafka-console-producer.bat --topic zing-zing --bootstrap-server localhost:9092
-Hii AUSTRALIA is winning WTC 2026
 (ctrl+c to come out after entering the data, ENTER hit brings you to next line)
 
 TO RETRIEVE DATA FROM SAVED TOPICS:
 C:\kafka_2.13-3.9.1\bin\windows\kafka-console-consumer.bat --topic zing-zing --from-beginning --bootstrap-server localhost:9092
-Hii AUSTRALIA is winning WTC 2026
 (ctrl+c to come out)
 
 							        PRODUCERS:
 CREATE A PRODUCER:
 C:\Users\manoj>C:\kafka_2.13-3.9.1\bin\windows\kafka-console-producer.bat --topic <zing-zing> --bootstrap-server localhost:9092
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+									ON A DOCKER CONTAINER:
+
+To enter into a container environment (completely isolated) = docker exec -it kafka bash (ON A NEW BASH TERMINAL)
+
+[appuser@kafka ~]$ kafka-topics --bootstrap-server localhost:9092 --create --topic manoj --partitions 1 --replication-factor 1
+
+[appuser@kafka ~]$ kafka-console-producer --bootstrap-server localhost:9092 --topic manoj
+
+[appuser@kafka ~]$ kafka-console-consumer --bootstrap-server localhost:9092 --topic manoj --from-beginning
