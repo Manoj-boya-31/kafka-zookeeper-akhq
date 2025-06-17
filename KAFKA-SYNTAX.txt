@@ -1,0 +1,21 @@
+								TOPICS:
+
+CREATE A TOPIC:
+C:\kafka_2.13-3.9.1\bin\windows\kafka-topics.bat --create --topic zing-zing --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+LIST ALL TOPICS:
+C:\kafka_2.13-3.9.1\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+TO WRITE DATA INTO TOPICS:
+C:\kafka_2.13-3.9.1\bin\windows\kafka-console-producer.bat --topic zing-zing --bootstrap-server localhost:9092
+Hii AUSTRALIA is winning WTC 2026
+(ctrl+c to come out after entering the data, ENTER hit brings you to next line)
+
+TO RETRIEVE DATA FROM SAVED TOPICS:
+C:\kafka_2.13-3.9.1\bin\windows\kafka-console-consumer.bat --topic zing-zing --from-beginning --bootstrap-server localhost:9092
+Hii AUSTRALIA is winning WTC 2026
+(ctrl+c to come out)
+
+							        PRODUCERS:
+CREATE A PRODUCER:
+C:\Users\manoj>C:\kafka_2.13-3.9.1\bin\windows\kafka-console-producer.bat --topic <zing-zing> --bootstrap-server localhost:9092
