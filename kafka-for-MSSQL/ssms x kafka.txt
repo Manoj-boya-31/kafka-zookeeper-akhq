@@ -1,0 +1,37 @@
+enable CDC:
+
+USE ELCM_COWAYUAT7;
+EXEC sys.sp_cdc_enable_table
+    @source_schema = 'TNA',
+    @source_name   = 'SwipeData',
+    @role_name     = NULL;
+
+-------------------------------------------------------------------------------
+
+ verify:
+
+-- Check if CDC is enabled on DB
+SELECT name, is_cdc_enabled FROM sys.databases WHERE name = 'ELCM_COWAYUAT7';
+
+-- Check if CDC is enabled on the table
+SELECT name, is_tracked_by_cdc FROM sys.tables WHERE name = 'SwipeData';
+
+-------------------------------------------------------------------------------
+
+Register the SQL Server Connector:
+
+curl -X POST http://localhost:8083/connectors \
+     -H "Content-Type: application/json" \
+     -d @sqlserver-source-config.json
+
+To delete while making changes in json file:
+
+$ curl -X DELETE http://localhost:8083/connectors/sqlserver-connector
+
+------------------------------------------------------------------------------
+
+docker exec -it kafka bash
+
+kafka-console-consumer --bootstrap-server localhost:9092 \
+  --topic TestKafkaSwipeData.TNA.SwipeData \
+  --from-beginning

@@ -1,0 +1,21 @@
+{
+  "name": "sqlserver-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "database.hostname": "172.16.19.4",
+    "database.port": "1433",
+    "database.user": "owner_nikhilteam",
+    "database.password": "Mac#2580",
+    "database.dbname": "ELCM_COWAYUAT7",
+    "database.server.name": "172.16.19.4",
+    "table.include.list": "TNA.SwipeData",
+    "topic.prefix": "TestKafkaSwipeData",
+    "database.history.kafka.bootstrap.servers": "kafka:29092",
+    "database.history.kafka.topic": "schema-changes-topic",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:29092",
+    "schema.history.internal.kafka.topic": "schema-changes.inventory",
+    "database.trustServerCertificate": "true",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true"
+  }
+}
